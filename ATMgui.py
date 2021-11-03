@@ -1,5 +1,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
+
+
 
 
 class Ui_TechSealsATM(object):
@@ -310,6 +313,12 @@ class Ui_TechSealsATM(object):
         self.momoBtn = QtWidgets.QPushButton(self.menuPage)
         self.momoBtn.setGeometry(QtCore.QRect(770, 410, 291, 81))
         self.momoBtn.setObjectName("momoBtn")
+
+        self.resetpinBtn = QtWidgets.QPushButton(self.menuPage)
+        self.resetpinBtn.setGeometry(QtCore.QRect(1150, 410, 291, 81))
+        self.resetpinBtn.setObjectName("resetpinBtn")
+
+
         self.logoutBtn = QtWidgets.QPushButton(self.menuPage)
         self.logoutBtn.setGeometry(QtCore.QRect(880, 30, 181, 61))
         self.logoutBtn.setStyleSheet("#logoutBtn {\n""    background-color: #ff1616;\n""    font-weight: bold;\n""    font-size: 25px;\n""}\n""\n""#logoutBtn:hover {\n""    background-color: #f13c3c;\n""}\n""\n""#logoutBtn:pressed {\n""    background-color: #c20707;\n""}")
@@ -908,7 +917,8 @@ class Ui_TechSealsATM(object):
         self.retranslateUi(TechSealsATM)
         self.main.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(TechSealsATM)
-
+    
+    
 
 
 
@@ -1064,6 +1074,9 @@ class Ui_TechSealsATM(object):
         ##########################################################################
         self.momoBtn.setText(_translate("TechSealsATM", "Mobile Money"))
 
+
+        self.resetpinBtn.setText(_translate("TechSealsATM", "PIN Reset"))
+        
         ############################## ATM MENU PAGE #############################
         ############################ LOGOUT BUTTON TEXT ##########################
         ##########################################################################
@@ -1354,7 +1367,7 @@ class Ui_TechSealsATM(object):
         ####################### ACCOUNT BALANCE PAGE #############################
         ############################ BODY TEXT ###################################
         ##########################################################################
-        self.balanceText.setText(_translate("TechSealsATM", "Your current GHS balance is\n""GHS 3000.00"))
+        #self.balanceText.setText(_translate("TechSealsATM", "Your current GHS balance is\n""GHS 3000")
 
         ####################### ACCOUNT BALANCE PAGE #############################
         ############################ BODY TEXT ###################################
