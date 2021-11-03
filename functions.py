@@ -1,22 +1,82 @@
 from ATMapp import *
+from functional import *
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
 
 
 class UIFunctions(MainWindow):
-   
-    def data():
-        name = 'BAGNA'
-        sessionData = {'name': name}
-        return sessionData
+    global sessiondata
+
+    def loginfunction(self):
+        
+        global sessiondata
+
+        userName = self.atmui.usernameInput.text()
+        pin = self.atmui.loginpinInput.text()
+        sessiondata =userLogin(userName)
+        
+        userPin = str(sessiondata['pin'])
+        
+
+        verify = pinVerify(userPin, pin)
+        if verify == True:
+            self.atmui.welcomeTitle.setText("Welcome "+ userName.upper())
+            UIFunctions.Menufunction(self)
+            
+        else : 
+            # pop up for wrong logins 
+            self.atmui.englishBtn.clicked.connect(lambda: UIFunctions.englishCode(self))
+        
+        
+
+    def Menufunction(self):
+        self.atmui.main.setCurrentWidget(self.atmui.menuPage)
+
+    
+        
+    
 
     def englishCode(self):
 
         ############################## ATM MENU PAGE #############################
         ################################ TITLE TEXT ##############################
         ##########################################################################
-        self.atmui.welcomeTitle.setText("Welcome "+UIFunctions.data()['name'])
         
         self.atmui.main.setCurrentWidget(self.atmui.loginPage)
-        self.atmui.loginBtn.clicked.connect(lambda: UIFunctions.loginfunction(self))
+
+        
+        self.atmui.loginBtn.clicked.connect(lambda:  UIFunctions.loginfunction(self))
+        name = UIFunctions.loginfunction
+        print(name)
+        
+        #userBalance=sessiondata['balance']
+        
+        
+
+        
+        
+        
+        self.atmui.balanceBtn.clicked.connect(lambda:UIFunctions.BalFunction(self))
+
+        
+
+
+        #sessiondata = userLogin(self.atmui.usernameInput.text())
+        # RETRIEVE SPECIFIED USER BALANCE AND STORE TO VARIABLE
+        #userBalance = sessiondata['balance']
+
+        #self.balanceText.setText(_translate("TechSealsATM", "Your current GHS balance is\n"
+        #"GHS" + userBalance['GHS'] + "\n""USD" + userBalance['USD'] ))
+
+        return 
+    def BalFunction(self):
+            userBalance = sessiondata['balance']
+            GHS= userBalance["GHS"]
+            USD= userBalance["USD"]
+            self.atmui.main.setCurrentWidget(self.atmui.balancePage)
+
+            statement = "Your available balance in \n""GHS : " + str(GHS) + "\n""USD : " + str(USD)
+            self.atmui.balanceText.setText(statement )
 
     def twiCode(self):
 
@@ -468,12 +528,5 @@ class UIFunctions(MainWindow):
         self.atmui.main.setCurrentWidget(self.atmui.loginPage)
         self.atmui.loginBtn.clicked.connect(lambda: UIFunctions.loginfunction(self))
 
-
-
-    def loginfunction(self):
-        self.atmui.main.setCurrentWidget(self.atmui.menuPage)
-        username = self.atmui.usernameInput.text()
-        pin = self.atmui.loginpinInput.text()
-        print("working? ",username,"pass ",pin)
 
 

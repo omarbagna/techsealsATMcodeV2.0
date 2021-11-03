@@ -22,12 +22,18 @@ class MainWindow(QtWidgets.QMainWindow, Ui_TechSealsATM):
         #WELCOME PAGE
         self.atmui.startBtn.clicked.connect(lambda: self.atmui.main.setCurrentWidget(self.atmui.languagePage))
 
+
         # LANGUAGE PAGE
         self.atmui.englishBtn.clicked.connect(lambda: UIFunctions.englishCode(self))
+        
         self.atmui.twiBtn.clicked.connect(lambda: UIFunctions.twiCode(self))
 
         # LOGIN PAGE
         #self.atmui.loginBtn.clicked.connect(lambda: self.atmui.main.setCurrentWidget(self.atmui.menuPage))
+        #self.atmui.loginBtn.clicked.connect(lambda: UIFunctions.loginfunction(self))
+        
+       
+
         self.atmui.cardlessBtn.clicked.connect(lambda: self.atmui.main.setCurrentWidget(self.atmui.momomenuPage))
 
         # FORGOT PIN PAGE
@@ -38,7 +44,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_TechSealsATM):
         self.atmui.vericodeSubmitBtn.clicked.connect(lambda: self.atmui.main.setCurrentWidget(self.atmui.pinchangePage))
         
         # MAIN MENU PAGE
-        self.atmui.balanceBtn.clicked.connect(lambda: self.atmui.main.setCurrentWidget(self.atmui.balancePage))
+        #self.atmui.balanceBtn.clicked.connect(lambda: UIFunctions.BalFunction(self))
         self.atmui.withdrawalBtn.clicked.connect(lambda: self.atmui.main.setCurrentWidget(self.atmui.withdrawalcurrencyPage))
         self.atmui.momoBtn.clicked.connect(lambda: self.atmui.main.setCurrentWidget(self.atmui.momomenuPage))
         self.atmui.logoutBtn.clicked.connect(lambda: self.atmui.main.setCurrentWidget(self.atmui.confirmquitPage))
@@ -89,7 +95,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_TechSealsATM):
 
         # LOGOUT CONFIRM PAGE
         self.atmui.confirmquitYesBtn.clicked.connect(lambda: self.atmui.main.setCurrentWidget(self.atmui.exitPage))
-        self.atmui.confirmquitNoBtn.clicked.connect(lambda: self.atmui.main.setCurrentWidget(self.atmui.menuPage))
+         #TESTING HERE Remind eben to replace
+        #self.atmui.confirmquitNoBtn.clicked.connect(lambda: self.atmui.main.setCurrentWidget(self.atmui.menuPage))
+        self.atmui.confirmquitNoBtn.clicked.connect(lambda: self.atmui.main.setCurrentWidget(self.atmui.languagePage))
         
 
 
