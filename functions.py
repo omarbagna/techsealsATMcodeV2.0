@@ -1,6 +1,5 @@
 import random
 import os
-from playsound import playsound
 from ATMapp import MainWindow
 
 
@@ -195,13 +194,11 @@ class UIFunctions(MainWindow):
     def successfulWithdrawal(self):
         global newBalance
         
-        cwd = os.getcwd()
         self.atmui.withdrawnamountText.setText("Successful Withdrawal of "+currency+' '+str(amountWithdrawn))
         self.atmui.previousbalanceText.setText("Previous Balance was "+currency+' '+str(balance[currency]))
         newBalance = balance[currency] - amountWithdrawn
         self.atmui.newbalanceText.setText("New Balance is "+currency+' '+str(newBalance))
         
-        playsound(r"{0}\ATM_soundEffect4.mp3".format(cwd))
         self.atmui.main.setCurrentWidget(self.atmui.successfulwithdrawalPage)
         self.atmui.receiptoptionBtn.clicked.connect(lambda: UIFunctions.receiptoptionFunction(self))
 
@@ -335,8 +332,6 @@ class UIFunctions(MainWindow):
 
 
     def momosuccessFunction(self):
-        cwd = os.getcwd()
-        playsound(r"{0}\ATM_soundEffect4.mp3".format(cwd))
         self.atmui.main.setCurrentWidget(self.atmui.momosuccessPage)
         self.atmui.backtoMenuBtn3.clicked.connect(lambda: UIFunctions.newTransactions(self))
 
@@ -903,7 +898,6 @@ class UIFunctions(MainWindow):
 
     # WITHDRAWAL INTERACTION TWI
     def withdrawUpdateTwi(self):
-
         self.atmui.main.setCurrentWidget(self.atmui.withdrawalcurrencyPage)
         self.atmui.cediBtn.clicked.connect(lambda: UIFunctions.ghsClickedTwi(self))
         self.atmui.dollarBtn.clicked.connect(lambda: UIFunctions.usdClickedTwi(self))
@@ -987,13 +981,11 @@ class UIFunctions(MainWindow):
     def successfulWithdrawalTwi(self):
         global newBalance
 
-        cwd = os.getcwd()
         self.atmui.withdrawnamountText.setText("Watumi ayi "+currency+' '+str(amountWithdrawn))
         self.atmui.previousbalanceText.setText("Sika a na wo wɔ "+currency+' '+str(balance[currency]))
         newBalance = balance[currency] - amountWithdrawn
         self.atmui.newbalanceText.setText("Sika a aka "+currency+' '+str(newBalance))
         
-        playsound(r"{0}\ATM_soundEffect4.mp3".format(cwd))
         self.atmui.main.setCurrentWidget(self.atmui.successfulwithdrawalPage)
         self.atmui.receiptoptionBtn.clicked.connect(lambda: UIFunctions.receiptoptionFunctionTwi(self))
 
@@ -1126,8 +1118,6 @@ class UIFunctions(MainWindow):
 
 
     def momosuccessFunctionTwi(self):
-        cwd = os.getcwd()
-        playsound(r"{0}\ATM_soundEffect4.mp3".format(cwd))
         self.atmui.main.setCurrentWidget(self.atmui.momosuccessPage)
         self.atmui.backtoMenuBtn3.clicked.connect(lambda: UIFunctions.newTransactionsTwi(self))
 
